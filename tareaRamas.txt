@@ -1,0 +1,136 @@
+dj$ git clone git@github.com:vencejo/EjercicioRamas2.gitCloning into 'EjercicioRamas2'...
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0)
+Receiving objects: 100% (3/3), done.
+
+dj$cd EjercicioRamas2
+dj$git checkout -b rama1
+Switched to a new branch 'rama1'
+dj$git commit -am "creada la rama1"
+# On branch rama1
+nothing to commit (working directory clean)
+dj$git status
+# On branch rama1
+nothing to commit (working directory clean)
+dj$touch fichero.dat
+dj$git status
+# On branch rama1
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	fichero.dat
+nothing added to commit but untracked files present (use "git add" to track)
+dj$git commit -am "creado el fichero.dat"
+# On branch rama1
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	fichero.dat
+nothing added to commit but untracked files present (use "git add" to track)
+dj$git add .
+dj$git commit -am "creado el fichero.dat"
+[rama1 8c16405] creado el fichero.dat
+ 0 files changed
+ create mode 100644 fichero.dat
+dj$git tag -a v0.1 -m "creado el fichero"
+dj$git status
+# On branch rama1
+nothing to commit (working directory clean)
+dj$git push origin master
+Everything up-to-date
+dj$git push origin rama1
+Counting objects: 4, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 280 bytes, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To git@github.com:vencejo/EjercicioRamas2.git
+ * [new branch]      rama1 -> rama1
+dj$git push --tags
+Counting objects: 1, done.
+Writing objects: 100% (1/1), 162 bytes, done.
+Total 1 (delta 0), reused 0 (delta 0)
+To git@github.com:vencejo/EjercicioRamas2.git
+ * [new tag]         v0.1 -> v0.1
+dj$git checkout -b metarama
+Switched to a new branch 'metarama'
+dj$git add . 
+dj$git commit -am "creada la nueva metarama"
+# On branch metarama
+nothing to commit (working directory clean)
+dj$echo "Este texto ha sido introducido en la metarama" >> fichero.dat 
+dj$git add .
+dj$git commit -am "Fichero modificado en la metarama"
+[metarama c3c2cd3] Fichero modificado en la metarama
+ 1 file changed, 1 insertion(+)
+dj$git push origin metarama
+Counting objects: 5, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 335 bytes, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To git@github.com:vencejo/EjercicioRamas2.git
+ * [new branch]      metarama -> metarama
+dj$git checkout rama1
+Switched to branch 'rama1'
+dj$git branch
+  master
+  metarama
+* rama1
+dj$git rebase metarama
+First, rewinding head to replay your work on top of it...
+Fast-forwarded rama1 to metarama.
+dj$git add .
+dj$git commit -am "hecho el rebase de metarama en rama 1"
+# On branch rama1
+nothing to commit (working directory clean)
+dj$git branch
+  master
+  metarama
+* rama1
+dj$git push origin rama1
+Total 0 (delta 0), reused 0 (delta 0)
+To git@github.com:vencejo/EjercicioRamas2.git
+   8c16405..c3c2cd3  rama1 -> rama1
+dj$git checkout master
+Switched to branch 'master'
+dj$git merge rama1
+Updating ace618a..c3c2cd3
+Fast-forward
+ fichero.dat |    1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 fichero.dat
+dj$git branch -vv
+* master   c3c2cd3 [origin/master: ahead 2] Fichero modificado en la metarama
+  metarama c3c2cd3 Fichero modificado en la metarama
+  rama1    c3c2cd3 Fichero modificado en la metarama
+dj$git commit -am "fusionada rama1 con master"
+# On branch master
+# Your branch is ahead of 'origin/master' by 2 commits.
+#
+nothing to commit (working directory clean)
+dj$git push origin master
+Total 0 (delta 0), reused 0 (delta 0)
+To git@github.com:vencejo/EjercicioRamas2.git
+   ace618a..c3c2cd3  master -> master
+dj$gitk & 
+[1] 5154
+dj$script -a tareaRamas.txt
+Script started, file is tareaRamas.txt
+dj$ls
+README.md  fichero.dat	tareaRamas.txt
+dj$quit
+No command 'quit' found, did you mean:
+ Command 'quilt' from package 'quilt' (main)
+ Command 'luit' from package 'x11-utils' (main)
+ Command 'quot' from package 'quota' (main)
+ Command 'quiz' from package 'bsdgames' (universe)
+ Command 'qgit' from package 'qgit' (universe)
+quit: command not found
+dj$exit
+exit
+Script done, file is tareaRamas.txt
+dj$^C
+dj$
+
